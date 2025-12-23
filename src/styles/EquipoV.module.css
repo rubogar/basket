@@ -1,0 +1,8 @@
+.equipoVisitante {
+  grid-column: x1 / x2;
+  grid-row: y0 / y1;
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  border: 1px solid white;
+}

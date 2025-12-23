@@ -1,0 +1,8 @@
+.grid {
+  display: grid;
+  grid-template-columns: [x0] 1fr [x1] 1fr [x2];
+  grid-template-rows: [y0] 1fr [y1] 1fr [y2];
+  width: 100%;
+  height: 28rem;
+  background-color: lightgrey;
+}

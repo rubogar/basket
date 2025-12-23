@@ -1,0 +1,8 @@
+.local{
+    grid-column: x0 / x1;
+    grid-row: y1 / y2;
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+    border: 1px solid white;
+}

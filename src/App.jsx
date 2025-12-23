@@ -1,11 +1,11 @@
-import './App.css';
-import { Fragment } from "react";
+import Stats from "./pages/Stats";
 
-function App(){
-  return(
+function App() {
+  return (
     <>
+      <Stats />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
