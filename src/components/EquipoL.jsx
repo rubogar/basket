@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import style from "../styles/EquipoL.module.css";
 
-function EquipoL() {
-  const [jugadores, setJugadores] = useState([]);
-  const [jugadorSeleccionado, setJugadorSeleccionado] = useState("");
+function EquipoL({ setJugadores }) {
+  const [jugadoresLocal, setJugadoresLocal] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,8 +11,7 @@ function EquipoL() {
       try {
         setCargando(true);
 
-        // Usando proxy (sin necesidad de backend)
-        const targetUrl = "https://baloncestoenvivo.feb.es/equipo/981309";
+        const targetUrl = "https://baloncestoenvivo.feb.es/equipo/981336";
         const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(
           targetUrl
         )}`;
@@ -28,7 +26,6 @@ function EquipoL() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, "text/html");
 
-        // Extraer los nombres
         const celdasNombre = doc.querySelectorAll("td.nombre.jugador");
         const nombresJugadores = [];
 
@@ -42,7 +39,8 @@ function EquipoL() {
           }
         });
 
-        setJugadores(nombresJugadores);
+        setJugadoresLocal(nombresJugadores);
+        setJugadores(nombresJugadores); // Pasar al componente padre
         setError(null);
       } catch (err) {
         console.error("Error:", err);
@@ -53,40 +51,16 @@ function EquipoL() {
     };
 
     obtenerJugadores();
-  }, []);
-
-  const handleChange = (event) => {
-    setJugadorSeleccionado(event.target.value);
-  };
+  }, [setJugadores]);
 
   return (
-    <div>
-      <div className={style.equipoLocal}>
-        <h1>Local</h1>
-
-        {cargando && <p>Cargando jugadores...</p>}
-
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
-        {!cargando && !error && (
-          <select
-            value={jugadorSeleccionado}
-            onChange={handleChange}
-            className={style.selectJugador}
-          >
-            <option value="">Selecciona un jugador</option>
-            {jugadores.map((jugador, index) => (
-              <option key={index} value={jugador}>
-                {jugador}
-              </option>
-            ))}
-          </select>
-        )}
-
-        {jugadorSeleccionado && (
-          <p>Jugador seleccionado: {jugadorSeleccionado}</p>
-        )}
-      </div>
+    <div className={style.equipoLocal}>
+      <h3>Equipo Local</h3>
+      {cargando && <p>Cargando jugadores...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {!cargando && !error && (
+        <p className={style.info}>{jugadoresLocal.length} jugadores cargados</p>
+      )}
     </div>
   );
 }

@@ -1,8 +1,28 @@
 .equipoLocal {
-  grid-column: x0 / x1;
-  grid-row: y0 / y1;
-  display: flex;
-  justify-content: end;
-  flex-direction: row;
-  border: 1px solid white;
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #334155;
+  flex: 1;
+}
+
+.equipoLocal h3 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.equipoLocal p {
+  margin: 0;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.info {
+  color: #34d399 !important;
+  font-weight: 600;
 }

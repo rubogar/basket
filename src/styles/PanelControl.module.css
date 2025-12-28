@@ -1,0 +1,231 @@
+.panelControl {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid #334155;
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #60a5fa;
+}
+
+.selectorEquipo,
+.selectorJugador {
+  margin-bottom: 24px;
+}
+
+.selectorEquipo label,
+.selectorJugador label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.botonesEquipo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.botonesEquipo button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #334155;
+  color: #cbd5e1;
+}
+
+.botonesEquipo button:hover {
+  background: #475569;
+  transform: translateY(-1px);
+}
+
+.botonesEquipo button.activo {
+  background: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.selectorJugador select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #475569;
+  border-radius: 8px;
+  background: #334155;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.selectorJugador select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grupoAccion label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.botones button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: white;
+}
+
+.convertido {
+  background: #16a34a;
+}
+
+.convertido:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+}
+
+.fallado {
+  background: #dc2626;
+}
+
+.fallado:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.rebote {
+  background: #ea580c;
+}
+
+.rebote:hover {
+  background: #c2410c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
+}
+
+.botonesOtras {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.botonesOtras button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: white;
+}
+
+.asistencia {
+  background: #0891b2;
+}
+
+.asistencia:hover {
+  background: #0e7490;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(8, 145, 178, 0.4);
+}
+
+.tapon {
+  background: #6366f1;
+}
+
+.tapon:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.perdida {
+  background: #eab308;
+}
+
+.perdida:hover {
+  background: #ca8a04;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
+}
+
+.falta {
+  background: #dc2626;
+}
+
+.falta:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+}
+
+.deshacer {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #475569;
+  color: white;
+}
+
+.deshacer:hover:not(:disabled) {
+  background: #64748b;
+  transform: translateY(-1px);
+}
+
+.deshacer:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .panelControl {
+    padding: 16px;
+  }
+
+  .botonesOtras {
+    grid-template-columns: 1fr;
+  }
+}

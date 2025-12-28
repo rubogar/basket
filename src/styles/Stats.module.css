@@ -1,8 +1,113 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  padding: 20px;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.marcador {
+  background: linear-gradient(90deg, #2563eb 0%, #7c3aed 100%);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.equipoScore {
+  text-align: center;
+  flex: 1;
+}
+
+.equipoScore h2 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.puntos {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.vs {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 40px;
+  opacity: 0.8;
+}
+
 .grid {
+  max-width: 1600px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: [x0] 1fr [x1] 1fr [x2];
-  grid-template-rows: [y0] 1fr [y1] 1fr [y2];
-  width: 100%;
-  height: 28rem;
-  background-color: lightgrey;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+}
+
+.panelControlContainer {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.equiposContainer {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tablasContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panelControlContainer {
+    position: relative;
+    top: 0;
+  }
+
+  .marcador {
+    padding: 20px;
+  }
+
+  .puntos {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+
+  .marcador {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .vs {
+    padding: 10px 0;
+  }
+
+  .equiposContainer {
+    flex-direction: column;
+  }
 }

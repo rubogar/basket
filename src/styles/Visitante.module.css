@@ -1,8 +1,102 @@
-.visitante{
-    grid-column: x1 / x2;
-    grid-row: y1 / y2;
-    display: flex;
-    justify-content: end;
-    flex-direction: row;
-    border: 1px solid white;
+.contenedor {
+  background: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid #334155;
+}
+
+.titulo {
+  background: #7c3aed;
+  padding: 16px 20px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.visitante {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.visitante thead {
+  background: #334155;
+}
+
+.visitante th {
+  padding: 12px 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #cbd5e1;
+  border: 1px solid #475569;
+}
+
+.visitante tbody tr {
+  border-bottom: 1px solid #334155;
+  transition: background 0.2s;
+}
+
+.visitante tbody tr:hover {
+  background: #2d3748;
+}
+
+.visitante td {
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.nombreJugador {
+  text-align: left !important;
+  font-weight: 600;
+  color: white;
+}
+
+.destacado {
+  font-weight: 700;
+  font-size: 15px;
+  color: #c084fc;
+}
+
+.valoracion {
+  font-weight: 700;
+  color: #34d399;
+}
+
+.totales {
+  background: #334155 !important;
+  font-weight: 700;
+}
+
+.totales td {
+  padding: 14px 8px;
+  border-color: #475569;
+}
+
+.totales .destacado {
+  font-size: 17px;
+  color: #a855f7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .visitante {
+    font-size: 11px;
+  }
+
+  .visitante th,
+  .visitante td {
+    padding: 8px 4px;
+  }
+
+  .titulo {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
 }

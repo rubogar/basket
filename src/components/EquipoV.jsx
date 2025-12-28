@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import style from "../styles/EquipoV.module.css";
 
-function EquipoV() {
-  const [jugadores, setJugadores] = useState([]);
-  const [jugadorSeleccionado, setJugadorSeleccionado] = useState("");
+function EquipoV({ setJugadores }) {
+  const [jugadoresVisitante, setJugadoresVisitante] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,8 +11,7 @@ function EquipoV() {
       try {
         setCargando(true);
 
-        // Usando proxy (sin necesidad de backend)
-        const targetUrl = "https://baloncestoenvivo.feb.es/equipo/981336";
+         const targetUrl = "https://baloncestoenvivo.feb.es/equipo/981309";
         const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(
           targetUrl
         )}`;
@@ -28,7 +26,6 @@ function EquipoV() {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlText, "text/html");
 
-        // Extraer los nombres
         const celdasNombre = doc.querySelectorAll("td.nombre.jugador");
         const nombresJugadores = [];
 
@@ -42,7 +39,8 @@ function EquipoV() {
           }
         });
 
-        setJugadores(nombresJugadores);
+        setJugadoresVisitante(nombresJugadores);
+        setJugadores(nombresJugadores); // Pasar al componente padre
         setError(null);
       } catch (err) {
         console.error("Error:", err);
@@ -53,40 +51,18 @@ function EquipoV() {
     };
 
     obtenerJugadores();
-  }, []);
-
-  const handleChange = (event) => {
-    setJugadorSeleccionado(event.target.value);
-  };
+  }, [setJugadores]);
 
   return (
-    <div>
-      <div className={style.equipoVisitante}>
-        <h1>Visitante</h1>
-
-        {cargando && <p>Cargando jugadores...</p>}
-
-        {error && <p style={{ color: "red" }}>{error}</p>}
-
-        {!cargando && !error && (
-          <select
-            value={jugadorSeleccionado}
-            onChange={handleChange}
-            className={style.selectJugador}
-          >
-            <option value="">Selecciona un jugador</option>
-            {jugadores.map((jugador, index) => (
-              <option key={index} value={jugador}>
-                {jugador}
-              </option>
-            ))}
-          </select>
-        )}
-
-        {jugadorSeleccionado && (
-          <p>Jugador seleccionado: {jugadorSeleccionado}</p>
-        )}
-      </div>
+    <div className={style.equipoVisitante}>
+      <h3>Equipo Visitante</h3>
+      {cargando && <p>Cargando jugadores...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {!cargando && !error && (
+        <p className={style.info}>
+          {jugadoresVisitante.length} jugadores cargados
+        </p>
+      )}
     </div>
   );
 }
