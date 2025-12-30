@@ -14,6 +14,7 @@ function Local({ jugadores, stats, calcularStats }) {
     asistencias: 0,
     tapones: 0,
     perdidas: 0,
+    recuperaciones: 0,
     faltasRecibidas: 0,
     faltasCometidas: 0,
   });
@@ -33,6 +34,7 @@ function Local({ jugadores, stats, calcularStats }) {
       as: 0,
       ta: 0,
       mt: 0,
+      br: 0,
       fc: 0,
       fr: 0,
     };
@@ -53,6 +55,7 @@ function Local({ jugadores, stats, calcularStats }) {
       totales.as += jugadorStats.asistencias;
       totales.ta += jugadorStats.tapones;
       totales.mt += jugadorStats.perdidas;
+      totales.br += jugadorStats.recuperaciones;
       totales.fc += jugadorStats.faltasCometidas;
       totales.fr += jugadorStats.faltasRecibidas;
     });
@@ -80,7 +83,8 @@ function Local({ jugadores, stats, calcularStats }) {
             <th>RT.</th>
             <th>AS.</th>
             <th>TA.</th>
-            <th>MT.</th>
+            <th>BP.</th>
+            <th>BR.</th>
             <th>FC.</th>
             <th>FR.</th>
             <th>VA.</th>
@@ -114,6 +118,7 @@ function Local({ jugadores, stats, calcularStats }) {
                 <td>{jugadorStats.asistencias}</td>
                 <td>{jugadorStats.tapones}</td>
                 <td>{jugadorStats.perdidas}</td>
+                <td>{jugadorStats.recuperaciones}</td>
                 <td>{jugadorStats.faltasCometidas}</td>
                 <td>{jugadorStats.faltasRecibidas}</td>
                 <td className={style.valoracion}>{calc.valoracion}</td>
@@ -142,6 +147,7 @@ function Local({ jugadores, stats, calcularStats }) {
             <td>{totales.as}</td>
             <td>{totales.ta}</td>
             <td>{totales.mt}</td>
+            <td>{totales.br}</td>
             <td>{totales.fc}</td>
             <td>{totales.fr}</td>
             <td>-</td>

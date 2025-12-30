@@ -29,6 +29,7 @@ function Stats() {
     asistencias: 0,
     tapones: 0,
     perdidas: 0,
+    recuperaciones: 0, // AÑADIDO
     faltasRecibidas: 0,
     faltasCometidas: 0,
   });
@@ -70,6 +71,7 @@ function Stats() {
       rebotesTotales +
       stats.asistencias +
       stats.tapones +
+      stats.recuperaciones + // AÑADIDO a la valoración
       stats.faltasRecibidas -
       (tcIntentados - tcConvertidos) -
       (stats.tlIntentados - stats.tlConvertidos) -
@@ -142,6 +144,9 @@ function Stats() {
         break;
       case "perdida":
         jugadorStats.perdidas += valor;
+        break;
+      case "recuperacion": // AÑADIDO
+        jugadorStats.recuperaciones += valor;
         break;
       case "faltaRecibida":
         jugadorStats.faltasRecibidas += valor;

@@ -11,7 +11,8 @@ function EquipoV({ setJugadores }) {
       try {
         setCargando(true);
 
-         const targetUrl = "https://baloncestoenvivo.feb.es/equipo/981309";
+       /*   const targetUrl = "https://baloncestoenvivo.feb.es/equipo/981309"; */
+       const targetUrl = "https://baloncestoenvivo.feb.es/equipo/980009";
         const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(
           targetUrl
         )}`;

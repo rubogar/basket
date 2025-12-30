@@ -161,6 +161,12 @@ function PanelControl({
                 Pérdida
               </button>
               <button
+                onClick={() => registrarAccion("recuperacion")}
+                className={style.recuperacion}
+              >
+                Recuperación
+              </button>
+              <button
                 onClick={() => registrarAccion("faltaCometida")}
                 className={style.falta}
               >
