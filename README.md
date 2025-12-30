@@ -1,16 +1,48 @@
-# React + Vite
+# 📊 Basketball Stats Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para registro de estadísticas de baloncesto en tiempo real.
 
-Currently, two official plugins are available:
+## 🎯 Características
+- Registro en vivo de estadísticas de jugadores
+- Cálculo automático de valoración ACB
+- Extracción automática de plantillas desde FEB
+- Panel de control intuitivo
+- Historial con función de deshacer
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías
+- React 18
+- CSS Modules
+- Fetch API para web scraping
+- DOMParser
 
-## React Compiler
+## 🚀 Instalación
+```bash
+git clone https://github.com/tu-usuario/basketball-stats
+cd basketball-stats
+npm install
+npm start
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📸 Capturas
 
-## Expanding the ESLint configuration
+![alt text](image-1.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image.png)
+
+
+## 👨‍💻 Autor
+Rubén García - [LinkedIn] https://www.linkedin.com/in/rub%C3%A9n-garc%C3%ADa-colchero/
+```
+
+### Aspectos importantes del repo:
+- ✅ **Licencia** (MIT es común para proyectos personales)
+- ✅ **.gitignore** bien configurado
+- ✅ **Screenshots** en carpeta `/docs` o `/screenshots`
+- ✅ **Commits limpios** con mensajes descriptivos
+- ✅ **Código comentado** en partes complejas
+- ✅ **package.json** con descripción clara
+
