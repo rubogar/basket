@@ -5,6 +5,7 @@ import Visitante from "./../components/Visitante";
 import EquipoL from "./../components/EquipoL";
 import EquipoV from "./../components/EquipoV";
 import PanelControl from "./../components/PanelControl";
+import { equiposDatabase } from "../data/Equipos";
 
 function Stats() {
   const [equipoActivo, setEquipoActivo] = useState("local");
@@ -14,6 +15,32 @@ function Stats() {
   const [historial, setHistorial] = useState([]);
   const [jugadoresLocal, setJugadoresLocal] = useState([]);
   const [jugadoresVisitante, setJugadoresVisitante] = useState([]);
+
+  // Estados para los equipos seleccionados
+  const [equipoLocalSeleccionado, setEquipoLocalSeleccionado] = useState(null);
+  const [equipoVisitanteSeleccionado, setEquipoVisitanteSeleccionado] =
+    useState(null);
+  const [urlLocal, setUrlLocal] = useState("");
+  const [urlVisitante, setUrlVisitante] = useState("");
+
+  // Estados para las ligas seleccionadas
+  const [ligaLocalSeleccionada, setLigaLocalSeleccionada] = useState("");
+  const [ligaVisitanteSeleccionada, setLigaVisitanteSeleccionada] =
+    useState("");
+
+  // Obtener lista única de ligas
+  const ligas = [...new Set(equiposDatabase.map((equipo) => equipo.liga))];
+
+  // Filtrar equipos por liga
+  const equiposLocal = ligaLocalSeleccionada
+    ? equiposDatabase.filter((equipo) => equipo.liga === ligaLocalSeleccionada)
+    : [];
+
+  const equiposVisitante = ligaVisitanteSeleccionada
+    ? equiposDatabase.filter(
+        (equipo) => equipo.liga === ligaVisitanteSeleccionada
+      )
+    : [];
 
   // Función para crear estadísticas vacías
   const createEmptyStats = () => ({
@@ -29,7 +56,7 @@ function Stats() {
     asistencias: 0,
     tapones: 0,
     perdidas: 0,
-    recuperaciones: 0, // AÑADIDO
+    recuperaciones: 0,
     faltasRecibidas: 0,
     faltasCometidas: 0,
   });
@@ -58,6 +85,48 @@ function Stats() {
     }
   }, [jugadoresVisitante]);
 
+  // Manejar cambio de liga local
+  const handleLigaLocalChange = (e) => {
+    setLigaLocalSeleccionada(e.target.value);
+    setEquipoLocalSeleccionado(null);
+    setUrlLocal("");
+    setStatsLocal({});
+    setJugadoresLocal([]);
+  };
+
+  // Manejar cambio de liga visitante
+  const handleLigaVisitanteChange = (e) => {
+    setLigaVisitanteSeleccionada(e.target.value);
+    setEquipoVisitanteSeleccionado(null);
+    setUrlVisitante("");
+    setStatsVisitante({});
+    setJugadoresVisitante([]);
+  };
+
+  // Manejar cambio de equipo local
+  const handleEquipoLocalChange = (e) => {
+    const equipoId = parseInt(e.target.value);
+    const equipo = equiposDatabase.find((eq) => eq.id === equipoId);
+    if (equipo) {
+      setEquipoLocalSeleccionado(equipo);
+      setUrlLocal(equipo.url);
+      setStatsLocal({});
+      setJugadoresLocal([]);
+    }
+  };
+
+  // Manejar cambio de equipo visitante
+  const handleEquipoVisitanteChange = (e) => {
+    const equipoId = parseInt(e.target.value);
+    const equipo = equiposDatabase.find((eq) => eq.id === equipoId);
+    if (equipo) {
+      setEquipoVisitanteSeleccionado(equipo);
+      setUrlVisitante(equipo.url);
+      setStatsVisitante({});
+      setJugadoresVisitante([]);
+    }
+  };
+
   // Función para calcular estadísticas derivadas
   const calcularStats = (stats) => {
     const puntos =
@@ -71,7 +140,7 @@ function Stats() {
       rebotesTotales +
       stats.asistencias +
       stats.tapones +
-      stats.recuperaciones + // AÑADIDO a la valoración
+      stats.recuperaciones +
       stats.faltasRecibidas -
       (tcIntentados - tcConvertidos) -
       (stats.tlIntentados - stats.tlConvertidos) -
@@ -145,7 +214,7 @@ function Stats() {
       case "perdida":
         jugadorStats.perdidas += valor;
         break;
-      case "recuperacion": // AÑADIDO
+      case "recuperacion":
         jugadorStats.recuperaciones += valor;
         break;
       case "faltaRecibida":
@@ -188,20 +257,89 @@ function Stats() {
 
   return (
     <div className={style.container}>
-      {/* Marcador */}
-      <div className={style.marcador}>
-        <div className={style.equipoScore}>
-          <h2>LOCAL</h2>
-          <div className={style.puntos}>{totalesLocal.puntos}</div>
-        </div>
-        <div className={style.vs}>VS</div>
-        <div className={style.equipoScore}>
-          <h2>VISITANTE</h2>
-          <div className={style.puntos}>{totalesVisitante.puntos}</div>
-        </div>
-      </div>
-
       <div className={style.grid}>
+        {/* Marcador con selectores */}
+        <div className={style.marcadorWrapper}>
+          <div className={style.marcador}>
+            <div className={style.equipoScore}>
+              {/* Selector de Liga Local */}
+              <select
+                className={style.selectorLiga}
+                value={ligaLocalSeleccionada}
+                onChange={handleLigaLocalChange}
+              >
+                <option value="">Seleccionar Liga</option>
+                {ligas.map((liga, index) => (
+                  <option key={`liga-local-${index}`} value={liga}>
+                    {liga}
+                  </option>
+                ))}
+              </select>
+
+              {/* Selector de Equipo Local */}
+              <select
+                className={style.selectorEquipo}
+                value={equipoLocalSeleccionado?.id || ""}
+                onChange={handleEquipoLocalChange}
+                disabled={!ligaLocalSeleccionada}
+              >
+                <option value="">
+                  {ligaLocalSeleccionada
+                    ? "Seleccionar Equipo"
+                    : "Selecciona liga primero"}
+                </option>
+                {equiposLocal.map((equipo) => (
+                  <option key={`local-${equipo.id}`} value={equipo.id}>
+                    {equipo.nombreCorto}
+                  </option>
+                ))}
+              </select>
+
+              <h2>{equipoLocalSeleccionado?.nombreCorto || "LOCAL"}</h2>
+              <div className={style.puntos}>{totalesLocal.puntos}</div>
+            </div>
+
+            <div className={style.vs}>VS</div>
+
+            <div className={style.equipoScore}>
+              {/* Selector de Liga Visitante */}
+              <select
+                className={style.selectorLiga}
+                value={ligaVisitanteSeleccionada}
+                onChange={handleLigaVisitanteChange}
+              >
+                <option value="">Seleccionar Liga</option>
+                {ligas.map((liga, index) => (
+                  <option key={`liga-visitante-${index}`} value={liga}>
+                    {liga}
+                  </option>
+                ))}
+              </select>
+
+              {/* Selector de Equipo Visitante */}
+              <select
+                className={style.selectorEquipo}
+                value={equipoVisitanteSeleccionado?.id || ""}
+                onChange={handleEquipoVisitanteChange}
+                disabled={!ligaVisitanteSeleccionada}
+              >
+                <option value="">
+                  {ligaVisitanteSeleccionada
+                    ? "Seleccionar Equipo"
+                    : "Selecciona liga primero"}
+                </option>
+                {equiposVisitante.map((equipo) => (
+                  <option key={`visitante-${equipo.id}`} value={equipo.id}>
+                    {equipo.nombreCorto}
+                  </option>
+                ))}
+              </select>
+
+              <h2>{equipoVisitanteSeleccionado?.nombreCorto || "VISITANTE"}</h2>
+              <div className={style.puntos}>{totalesVisitante.puntos}</div>
+            </div>
+          </div>
+        </div>
         {/* Panel de Control */}
         <div className={style.panelControlContainer}>
           <PanelControl
@@ -223,19 +361,27 @@ function Stats() {
             jugadores={jugadoresLocal}
             stats={statsLocal}
             calcularStats={calcularStats}
+            nombreEquipo={equipoLocalSeleccionado?.nombre || "EQUIPO LOCAL"}
           />
           <Visitante
             jugadores={jugadoresVisitante}
             stats={statsVisitante}
             calcularStats={calcularStats}
+            nombreEquipo={
+              equipoVisitanteSeleccionado?.nombre || "EQUIPO VISITANTE"
+            }
           />
         </div>
       </div>
 
       {/* Componentes ocultos para cargar jugadores */}
       <div style={{ display: "none" }}>
-        <EquipoL setJugadores={setJugadoresLocal} />
-        <EquipoV setJugadores={setJugadoresVisitante} />
+        {urlLocal && (
+          <EquipoL setJugadores={setJugadoresLocal} url={urlLocal} />
+        )}
+        {urlVisitante && (
+          <EquipoV setJugadores={setJugadoresVisitante} url={urlVisitante} />
+        )}
       </div>
     </div>
   );
