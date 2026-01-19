@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "../styles/EquipoL.module.css";
 
-function EquipoL({ setJugadores, url }) {
+function EquipoL({ setJugadores, setEscudo, url }) {
   const [jugadoresLocal, setJugadoresLocal] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(null);
@@ -38,20 +38,32 @@ function EquipoL({ setJugadores, url }) {
           }
         });
 
+        // Obtener escudo
+        const wrapperLogo = doc.querySelector(".wrapper-logo");
+        let urlEscudo = "";
+        if (wrapperLogo) {
+          const img = wrapperLogo.querySelector("img");
+          if (img && img.src) {
+            urlEscudo = img.src;
+          }
+        }
+
         setJugadoresLocal(nombresJugadores);
         setJugadores(nombresJugadores);
+        setEscudo(urlEscudo);
         setError(null);
       } catch (err) {
         console.error("Error:", err);
         setError("No se pudieron cargar los jugadores");
         setJugadores([]);
+        setEscudo("");
       } finally {
         setCargando(false);
       }
     };
 
     obtenerJugadores();
-  }, [url, setJugadores]);
+  }, [url, setJugadores, setEscudo]);
 
   return (
     <div className={style.equipoLocal}>

@@ -200,4 +200,25 @@
   .equiposContainer {
     flex-direction: column;
   }
+  /* Estilos para los escudos */
+.escudo {
+  display: flex;
+  width: 5px;
+  height: 5px;
+  margin: 8px auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.escudo:hover {
+  transform: scale(1.1);
+}
+
+/* Ajuste responsive para escudos */
+@media (max-width: 768px) {
+  .escudo {
+    width: 4px;
+    height: 4px;
+  }
+}
 }

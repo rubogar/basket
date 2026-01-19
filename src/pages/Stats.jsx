@@ -16,6 +16,10 @@ function Stats() {
   const [jugadoresLocal, setJugadoresLocal] = useState([]);
   const [jugadoresVisitante, setJugadoresVisitante] = useState([]);
 
+  // Estados para los escudos
+  const [escudoLocal, setEscudoLocal] = useState("");
+  const [escudoVisitante, setEscudoVisitante] = useState("");
+
   // Estados para los equipos seleccionados
   const [equipoLocalSeleccionado, setEquipoLocalSeleccionado] = useState(null);
   const [equipoVisitanteSeleccionado, setEquipoVisitanteSeleccionado] =
@@ -38,7 +42,7 @@ function Stats() {
 
   const equiposVisitante = ligaVisitanteSeleccionada
     ? equiposDatabase.filter(
-        (equipo) => equipo.liga === ligaVisitanteSeleccionada
+        (equipo) => equipo.liga === ligaVisitanteSeleccionada,
       )
     : [];
 
@@ -92,6 +96,7 @@ function Stats() {
     setUrlLocal("");
     setStatsLocal({});
     setJugadoresLocal([]);
+    setEscudoLocal("");
   };
 
   // Manejar cambio de liga visitante
@@ -101,6 +106,7 @@ function Stats() {
     setUrlVisitante("");
     setStatsVisitante({});
     setJugadoresVisitante([]);
+    setEscudoVisitante("");
   };
 
   // Manejar cambio de equipo local
@@ -112,6 +118,7 @@ function Stats() {
       setUrlLocal(equipo.url);
       setStatsLocal({});
       setJugadoresLocal([]);
+      setEscudoLocal("");
     }
   };
 
@@ -124,6 +131,7 @@ function Stats() {
       setUrlVisitante(equipo.url);
       setStatsVisitante({});
       setJugadoresVisitante([]);
+      setEscudoVisitante("");
     }
   };
 
@@ -296,6 +304,22 @@ function Stats() {
               </select>
 
               <h2>{equipoLocalSeleccionado?.nombreCorto || "LOCAL"}</h2>
+
+              {/* Escudo Local */}
+              <div className={style.escudo}>
+                {escudoLocal && (
+                  <img
+                    src={escudoLocal}
+                    alt="Escudo Local"
+                    style={{
+                      width: "120px",
+                      height: "120px",
+                      objectFit: "cover",
+                    }}
+                    className={style.escudo}
+                  />
+                )}
+              </div>
               <div className={style.puntos}>{totalesLocal.puntos}</div>
             </div>
 
@@ -336,6 +360,21 @@ function Stats() {
               </select>
 
               <h2>{equipoVisitanteSeleccionado?.nombreCorto || "VISITANTE"}</h2>
+
+              {/* Escudo Visitante */}
+              <div className={style.escudo}>
+                {escudoVisitante && (
+                  <img
+                    src={escudoVisitante}
+                    alt="Escudo Visitante"
+                    style={{
+                      width: "120px",
+                      height: "120px",
+                    }}
+                  />
+                )}
+              </div>
+
               <div className={style.puntos}>{totalesVisitante.puntos}</div>
             </div>
           </div>
@@ -377,10 +416,18 @@ function Stats() {
       {/* Componentes ocultos para cargar jugadores */}
       <div style={{ display: "none" }}>
         {urlLocal && (
-          <EquipoL setJugadores={setJugadoresLocal} url={urlLocal} />
+          <EquipoL
+            setJugadores={setJugadoresLocal}
+            setEscudo={setEscudoLocal}
+            url={urlLocal}
+          />
         )}
         {urlVisitante && (
-          <EquipoV setJugadores={setJugadoresVisitante} url={urlVisitante} />
+          <EquipoV
+            setJugadores={setJugadoresVisitante}
+            setEscudo={setEscudoVisitante}
+            url={urlVisitante}
+          />
         )}
       </div>
     </div>

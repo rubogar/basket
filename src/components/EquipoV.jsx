@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "../styles/EquipoV.module.css";
 
-function EquipoV({ setJugadores, url }) {
+function EquipoV({ setJugadores, setEscudo, url }) {
   const [jugadoresVisitante, setJugadoresVisitante] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [error, setError] = useState(null);
@@ -38,20 +38,32 @@ function EquipoV({ setJugadores, url }) {
           }
         });
 
+        // Obtener escudo
+        const wrapperLogo = doc.querySelector(".wrapper-logo");
+        let urlEscudo = "";
+        if (wrapperLogo) {
+          const img = wrapperLogo.querySelector("img");
+          if (img && img.src) {
+            urlEscudo = img.src;
+          }
+        }
+
         setJugadoresVisitante(nombresJugadores);
         setJugadores(nombresJugadores);
+        setEscudo(urlEscudo);
         setError(null);
       } catch (err) {
         console.error("Error:", err);
         setError("No se pudieron cargar los jugadores");
         setJugadores([]);
+        setEscudo("");
       } finally {
         setCargando(false);
       }
     };
 
     obtenerJugadores();
-  }, [url, setJugadores]);
+  }, [url, setJugadores, setEscudo]);
 
   return (
     <div className={style.equipoVisitante}>
