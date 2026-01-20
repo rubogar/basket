@@ -1,16 +1,16 @@
 .panelControl {
-  background: #1e293b;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
 }
 
 .titulo {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 20px;
-  color: #60a5fa;
+  color: var(--accent-local);
 }
 
 .selectorEquipo,
@@ -24,7 +24,7 @@
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #cbd5e1;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -43,28 +43,28 @@
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
-  background: #334155;
-  color: #cbd5e1;
+  background: var(--bg-table-header);
+  color: var(--text-muted);
 }
 
 .botonesEquipo button:hover {
-  background: #475569;
+  background: var(--border-light);
   transform: translateY(-1px);
 }
 
 .botonesEquipo button.activo {
-  background: #3b82f6;
+  background: var(--accent-primary);
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
 }
 
 .selectorJugador select {
   width: 100%;
   padding: 12px;
-  border: 1px solid #475569;
+  border: 1px solid var(--border-light);
   border-radius: 8px;
-  background: #334155;
-  color: white;
+  background: var(--bg-table-header);
+  color: var(--text-primary);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
@@ -72,8 +72,8 @@
 
 .selectorJugador select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
 }
 
 .acciones {
@@ -87,7 +87,7 @@
   font-size: 11px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: #94a3b8;
+  color: var(--text-disabled);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -110,31 +110,31 @@
 }
 
 .convertido {
-  background: #16a34a;
+  background: var(--success);
 }
 
 .convertido:hover {
-  background: #15803d;
+  background: var(--success-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
 }
 
 .fallado {
-  background: #dc2626;
+  background: var(--error);
 }
 
 .fallado:hover {
-  background: #b91c1c;
+  background: var(--error-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
 }
 
 .rebote {
-  background: #ea580c;
+  background: var(--orange);
 }
 
 .rebote:hover {
-  background: #c2410c;
+  background: var(--orange-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
 }
@@ -157,51 +157,51 @@
 }
 
 .asistencia {
-  background: #0891b2;
+  background: var(--info);
 }
 
 .asistencia:hover {
-  background: #0e7490;
+  background: var(--info-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(8, 145, 178, 0.4);
 }
 
 .tapon {
-  background: #6366f1;
+  background: var(--purple);
 }
 
 .tapon:hover {
-  background: #4f46e5;
+  background: var(--purple-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
 
 .recuperacion {
-  background: #d063f1;
+  background: var(--pink);
 }
 
 .recuperacion:hover {
-  background: #af54ca;
+  background: var(--pink-hover);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
 }
 
 .perdida {
-  background: #eab308;
+  background: var(--warning);
 }
 
 .perdida:hover {
-  background: #ca8a04;
+  background: var(--warning-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
 }
 
 .falta {
-  background: #dc2626;
+  background: var(--error);
 }
 
 .falta:hover {
-  background: #b91c1c;
+  background: var(--error-hover);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
 }
@@ -215,12 +215,12 @@
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
-  background: #475569;
+  background: var(--border-light);
   color: white;
 }
 
 .deshacer:hover:not(:disabled) {
-  background: #64748b;
+  background: var(--border-color);
   transform: translateY(-1px);
 }
 

@@ -1,18 +1,19 @@
 .contenedor {
-  background: #1e293b;
+  background: var(--bg-card);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  border: 1px solid #334155;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
 }
 
 .titulo {
-  background: #7c3aed;
+  background: var(--accent-visitante);
   padding: 16px 20px;
   margin: 0;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
+  color: var(--text-primary);
 }
 
 .tablaWrapper {
@@ -28,7 +29,7 @@
 }
 
 .visitante thead {
-  background: #334155;
+  background: var(--bg-table-header);
 }
 
 .visitante th {
@@ -38,35 +39,35 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: #cbd5e1;
-  border: 1px solid #475569;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
   white-space: nowrap;
 }
 
 .visitante tbody tr {
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid var(--border-color);
   transition: background 0.2s;
 }
 
 .visitante tbody tr:hover {
-  background: #2d3748;
+  background: var(--bg-hover);
 }
 
 .visitante td {
   padding: 12px 8px;
   text-align: center;
-  border: 1px solid #334155;
-  color: #e2e8f0;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
 .nombreJugador {
   text-align: left !important;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
   position: sticky;
   left: 0;
-  background: #1e293b;
+  background: var(--bg-card);
   z-index: 1;
   min-width: 120px;
   max-width: 180px;
@@ -75,37 +76,37 @@
 }
 
 .visitante tbody tr:hover .nombreJugador {
-  background: #2d3748;
+  background: var(--bg-hover);
 }
 
 .totales .nombreJugador {
-  background: #334155 !important;
+  background: var(--bg-table-header) !important;
 }
 
 .destacado {
   font-weight: 700;
   font-size: 15px;
-  color: #c084fc;
+  color: var(--accent-visitante);
 }
 
 .valoracion {
   font-weight: 700;
-  color: #34d399;
+  color: var(--success);
 }
 
 .totales {
-  background: #334155 !important;
+  background: var(--bg-table-header) !important;
   font-weight: 700;
 }
 
 .totales td {
   padding: 14px 8px;
-  border-color: #475569;
+  border-color: var(--border-light);
 }
 
 .totales .destacado {
   font-size: 17px;
-  color: #a855f7;
+  color: var(--accent-secondary);
 }
 
 /* Responsive */
