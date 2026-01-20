@@ -143,6 +143,26 @@
   gap: 20px;
 }
 
+/* Estilos para los escudos */
+.escudo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.escudo img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.escudo:hover {
+  transform: scale(1.1);
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .grid {
@@ -174,7 +194,7 @@
 
   .marcador {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     padding: 20px 15px;
   }
 
@@ -184,41 +204,74 @@
   }
 
   .puntos {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .equipoScore {
     width: 100%;
   }
 
+  .equipoScore h2 {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
   .selectorLiga,
   .selectorEquipo {
-    font-size: 13px;
+    font-size: 12px;
     padding: 10px 12px;
+    padding-right: 32px;
   }
 
   .equiposContainer {
     flex-direction: column;
   }
-  /* Estilos para los escudos */
-.escudo {
-  display: flex;
-  width: 5px;
-  height: 5px;
-  margin: 8px auto;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-  transition: transform 0.3s ease;
-}
 
-.escudo:hover {
-  transform: scale(1.1);
-}
+  .escudo img {
+    width: 80px;
+    height: 80px;
+  }
 
-/* Ajuste responsive para escudos */
-@media (max-width: 768px) {
-  .escudo {
-    width: 4px;
-    height: 4px;
+  .grid {
+    gap: 15px;
+  }
+
+  .tablasContainer {
+    gap: 15px;
   }
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+  }
+
+  .marcador {
+    padding: 15px 10px;
+    gap: 12px;
+  }
+
+  .puntos {
+    font-size: 36px;
+  }
+
+  .equipoScore h2 {
+    font-size: 12px;
+  }
+
+  .selectorLiga,
+  .selectorEquipo {
+    font-size: 11px;
+    padding: 8px 10px;
+    padding-right: 30px;
+  }
+
+  .vs {
+    font-size: 16px;
+  }
+
+  .escudo img {
+    width: 60px;
+    height: 60px;
+  }
 }

@@ -15,10 +15,16 @@
   letter-spacing: 1px;
 }
 
+.tablaWrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .local {
   width: 100%;
   border-collapse: collapse;
   font-size: 13px;
+  min-width: 800px;
 }
 
 .local thead {
@@ -34,6 +40,7 @@
   letter-spacing: 0.5px;
   color: #cbd5e1;
   border: 1px solid #475569;
+  white-space: nowrap;
 }
 
 .local tbody tr {
@@ -50,12 +57,29 @@
   text-align: center;
   border: 1px solid #334155;
   color: #e2e8f0;
+  white-space: nowrap;
 }
 
 .nombreJugador {
   text-align: left !important;
   font-weight: 600;
   color: white;
+  position: sticky;
+  left: 0;
+  background: #1e293b;
+  z-index: 1;
+  min-width: 120px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.local tbody tr:hover .nombreJugador {
+  background: #2d3748;
+}
+
+.totales .nombreJugador {
+  background: #334155 !important;
 }
 
 .destacado {
@@ -86,17 +110,70 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .titulo {
+    font-size: 14px;
+    padding: 12px 16px;
+  }
+
   .local {
     font-size: 11px;
+    min-width: 750px;
   }
 
   .local th,
   .local td {
-    padding: 8px 4px;
+    padding: 8px 6px;
+    font-size: 10px;
+  }
+
+  .nombreJugador {
+    min-width: 100px;
+    max-width: 150px;
+    font-size: 11px;
+  }
+
+  .destacado {
+    font-size: 13px;
+  }
+
+  .totales .destacado {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenedor {
+    border-radius: 8px;
   }
 
   .titulo {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .local {
+    font-size: 10px;
+    min-width: 700px;
+  }
+
+  .local th,
+  .local td {
+    padding: 6px 4px;
+    font-size: 9px;
+  }
+
+  .nombreJugador {
+    min-width: 90px;
+    max-width: 120px;
+    font-size: 10px;
+    padding: 6px 4px;
+  }
+
+  .destacado {
+    font-size: 12px;
+  }
+
+  .totales .destacado {
     font-size: 14px;
-    padding: 12px 16px;
   }
 }

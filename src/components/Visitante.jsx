@@ -84,7 +84,7 @@ function Visitante({ jugadores, stats, calcularStats }) {
               <th>RT.</th>
               <th>AS.</th>
               <th>TA.</th>
-              <th>MT.</th>
+              <th>BP.</th>
               <th>BR.</th>
               <th>FC.</th>
               <th>FR.</th>
@@ -127,7 +127,7 @@ function Visitante({ jugadores, stats, calcularStats }) {
               );
             })}
             <tr className={style.totales}>
-              <td>TOTAL</td>
+              <td className={style.nombreJugador}>TOTAL</td>
               <td>-</td>
               <td className={style.destacado}>{totales.puntos}</td>
               <td>

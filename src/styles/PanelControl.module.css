@@ -175,6 +175,7 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
 }
+
 .recuperacion {
   background: #d063f1;
 }
@@ -229,12 +230,120 @@
 }
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .panelControl {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .panelControl {
     padding: 16px;
   }
 
+  .titulo {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .selectorEquipo,
+  .selectorJugador {
+    margin-bottom: 20px;
+  }
+
+  .selectorEquipo label,
+  .selectorJugador label {
+    font-size: 12px;
+  }
+
+  .botonesEquipo button {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .selectorJugador select {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .acciones {
+    gap: 16px;
+  }
+
+  .grupoAccion label {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .botones button,
+  .botonesOtras button {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .deshacer {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panelControl {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .titulo {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .selectorEquipo,
+  .selectorJugador {
+    margin-bottom: 16px;
+  }
+
+  .selectorEquipo label,
+  .selectorJugador label {
+    font-size: 11px;
+  }
+
+  .botonesEquipo {
+    gap: 6px;
+  }
+
+  .botonesEquipo button {
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .selectorJugador select {
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .acciones {
+    gap: 14px;
+  }
+
+  .grupoAccion label {
+    font-size: 9px;
+    margin-bottom: 5px;
+  }
+
+  .botones,
   .botonesOtras {
-    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .botones button,
+  .botonesOtras button {
+    padding: 9px 6px;
+    font-size: 11px;
+  }
+
+  .deshacer {
+    padding: 9px;
+    font-size: 12px;
   }
 }
